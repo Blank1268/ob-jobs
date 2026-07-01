@@ -1,15 +1,14 @@
 OBJobs = {
-    Version = "0.1.0",
+    Version = Config and Config.Version or "0.1.0",
 
-    Registry = {},
+    Core = {},
 
-    Players = {},
+    Classes = {},
 
+    Jobs = {},
     Activities = {},
-
     Contracts = {},
-
+    Players = {},
     Events = {},
-
     XP = {}
 }

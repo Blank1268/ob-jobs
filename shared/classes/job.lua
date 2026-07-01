@@ -1,7 +1,7 @@
 Job = {}
 Job.__index = Job
 
---- Creates a new Job object.
+---Creates a new Job object.
 ---@param data table
 ---@return table
 function Job:new(data)

@@ -2,57 +2,56 @@ local Registry = {}
 
 Registry.Jobs = {}
 
----Registers a new job with the framework.
----@param job table
----@return boolean success
-function Registry:RegisterJob(job)
-    if type(job) ~= "table" then
-        print("^1[OB Jobs]^7 RegisterJob failed: job must be a table")
+function Registry:Register(data)
+    if type(data) ~= "table" then
+        Logger:Error("Registry:Register failed: data must be a table")
         return false
     end
 
-    if not job.id or job.id == "" then
-        print("^1[OB Jobs]^7 RegisterJob failed: missing job id")
+    if not data.id or data.id == "" then
+        Logger:Error("Registry:Register failed: missing job id")
         return false
     end
 
-    if not job.label or job.label == "" then
-        print(("^1[OB Jobs]^7 RegisterJob failed for '%s': missing label"):format(job.id))
+    if not data.label or data.label == "" then
+        Logger:Error(("Registry:Register failed for '%s': missing label"):format(data.id))
         return false
     end
 
-    if self.Jobs[job.id] then
-        print(("^3[OB Jobs]^7 Job '%s' is already registered, overwriting"):format(job.id))
+    if self.Jobs[data.id] then
+        Logger:Warn(("Job '%s' is already registered, overwriting"):format(data.id))
     end
 
-    job.maxLevel = job.maxLevel or 100
-    job.enabled = job.enabled ~= false
+    local job = Job:new(data)
 
-    self.Jobs[job.id] = job
+    self.Jobs[job:GetId()] = job
 
-    print(("^2[OB Jobs]^7 Registered job: %s (%s)"):format(job.label, job.id))
+    Logger:Info(("Registered job: %s (%s)"):format(job:GetLabel(), job:GetId()))
 
     return true
 end
 
----Gets a registered job by id.
----@param jobId string
----@return table|nil
-function Registry:GetJob(jobId)
+function Registry:Get(jobId)
     return self.Jobs[jobId]
 end
 
----Checks if a job exists.
----@param jobId string
----@return boolean
-function Registry:JobExists(jobId)
+function Registry:Exists(jobId)
     return self.Jobs[jobId] ~= nil
 end
 
----Returns all registered jobs.
----@return table
-function Registry:GetJobs()
+function Registry:GetAll()
     return self.Jobs
+end
+
+function Registry:Remove(jobId)
+    if not self.Jobs[jobId] then
+        return false
+    end
+
+    self.Jobs[jobId] = nil
+    Logger:Info(("Removed job: %s"):format(jobId))
+
+    return true
 end
 
 OBJobs.Registry = Registry

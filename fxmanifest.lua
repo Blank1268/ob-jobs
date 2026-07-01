@@ -8,12 +8,22 @@ description 'OB Jobs Framework'
 version '1.0.0'
 
 shared_scripts {
-    'shared/*.lua'
+    'shared/init.lua',
+
+    'shared/config.lua',
+    'shared/logger.lua',
+
+    'shared/core/*.lua',
+
+    'shared/classes/*.lua',
+
+    'shared/managers/*.lua'
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server/*.lua'
+    'server/*.lua',
+    'server/dev/*.lua'
 }
 
 client_scripts {
