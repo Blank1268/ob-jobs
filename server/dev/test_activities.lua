@@ -14,7 +14,7 @@ CreateThread(function()
 
         label = "Dig Foundation",
 
-        duration = 30,
+        duration = 10,
 
         reward = 250,
 

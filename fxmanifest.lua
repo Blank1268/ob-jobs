@@ -15,21 +15,15 @@ shared_scripts {
     'shared/logger.lua',
 
     'shared/core/*.lua',
-
     'shared/adapters/*.lua',
-
     'shared/classes/*.lua',
-
     'shared/managers/*.lua'
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-
     'server/*.lua',
-
     'server/dev/*.lua',
-
     'exports/server.lua'
 }
 

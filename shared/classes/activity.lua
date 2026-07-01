@@ -51,3 +51,19 @@ end
 function OBJobs.Classes.Activity:IsEnabled()
     return self.enabled
 end
+
+function OBJobs.Classes.Activity:CanStart(player)
+    if not self:IsEnabled() then
+        return false, "Activity is disabled."
+    end
+
+    if not player then
+        return false, "Invalid player."
+    end
+
+    if player:GetState() ~= OBJobs.State.ON_DUTY then
+        return false, "Player is not on duty."
+    end
+
+    return true
+end
