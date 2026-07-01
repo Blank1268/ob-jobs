@@ -88,11 +88,11 @@ function Activities:Complete(playerSource, activity)
         activity:GetXP()
     ))
 
-    TriggerClientEvent("QBCore:Notify", tonumber(playerSource), ("Completed: %s | Earned $%s | %s XP"):format(
+   TriggerClientEvent("ob_jobs:client:notify", playerSource, ("Completed: %s | Earned $%s | %s XP"):format(
     activity:GetLabel(),
     activity:GetReward(),
     activity:GetXP()
-), "success", 5000)
+))
 
     local player = OBJobs.Players:Get(playerSource)
 

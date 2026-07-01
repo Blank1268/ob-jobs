@@ -33,7 +33,9 @@ client_scripts {
     'exports/client.lua'
 }
 
-exports {
+server_exports {
     'RegisterJob',
-    'GetJob'
+    'GetJob',
+    'GetJobs',
+    'JobExists'
 }
