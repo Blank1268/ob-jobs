@@ -11,9 +11,12 @@ shared_scripts {
     'shared/init.lua',
 
     'shared/config.lua',
+    'shared/constants.lua',
     'shared/logger.lua',
 
     'shared/core/*.lua',
+
+    'shared/adapters/*.lua',
 
     'shared/classes/*.lua',
 
@@ -22,12 +25,18 @@ shared_scripts {
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
+
     'server/*.lua',
-    'server/dev/*.lua'
+
+    'server/dev/*.lua',
+
+    'exports/server.lua'
 }
 
 client_scripts {
-    'client/*.lua'
+    'client/*.lua',
+
+    'exports/client.lua'
 }
 
 exports {

@@ -10,5 +10,6 @@ OBJobs = {
     Contracts = {},
     Players = {},
     Events = {},
-    XP = {}
+    XP = {},
+    Classes = {}
 }
