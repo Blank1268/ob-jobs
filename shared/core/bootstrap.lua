@@ -14,6 +14,10 @@ function OBJobs.Core:Initialize()
     if OBJobs.Core.Validator then
         OBJobs.Core.Validator:Run()
     end
+    
+    if OBJobs.Modules and OBJobs.Modules.Progression then
+        OBJobs.Modules.Progression:Initialize()
+    end
 
     self.Initialized = true
 
