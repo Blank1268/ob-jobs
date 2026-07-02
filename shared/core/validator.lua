@@ -20,6 +20,8 @@ function OBJobs.Core.Validator:Run()
     self:Check("Activities Manager", OBJobs.Activities and OBJobs.Activities.Register)
     self:Check("Players Manager", OBJobs.Players and OBJobs.Players.Register)
     self:Check("XP Service", OBJobs.XP and OBJobs.XP.Add)
+    self:Check("Tools Service", OBJobs.Tools and OBJobs.Tools.Has)
+
 
     Logger:Info("Startup validation complete.")
-end
+end    
