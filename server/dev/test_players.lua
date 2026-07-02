@@ -2,22 +2,25 @@ if not Config.DeveloperMode then
     return
 end
 
-AddEventHandler("playerJoining", function(source)
-    local qbPlayer = exports["qb-core"]:GetCoreObject().Functions.GetPlayer(source)
-
-    if not qbPlayer then
-        Logger:Warn("Could not get QBCore player during join.")
+RegisterCommand("obregister", function(source)
+    if source == 0 then
+        Logger:Warn("Use /obregister in-game.")
         return
     end
 
-    local player = OBJobs.Players:Register(
-        source,
-        qbPlayer.PlayerData.citizenid
-    )
+    local citizenId = OBJobs.Framework:GetCitizenId(source)
 
-    Logger:Debug(("Player object created for %s"):format(player.citizenId))
-end)
+    if not citizenId then
+        Logger:Warn(("Could not get citizen ID for source %s"):format(source))
+        return
+    end
 
-AddEventHandler("playerDropped", function()
-    OBJobs.Players:Remove(source)
-end)
+    local player = OBJobs.Players:Register(source, citizenId)
+
+    player:SetCurrentJob("construction")
+    player:SetDuty(true)
+
+    TriggerClientEvent("ob_jobs:client:notify", source, "OB player registered and set on duty.")
+
+    Logger:Info(("Registered player %s | CitizenID: %s"):format(source, citizenId))
+end, false)

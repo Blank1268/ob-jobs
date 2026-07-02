@@ -4,7 +4,6 @@ Players.Items = {}
 
 function Players:Register(source, citizenId)
     if self.Items[source] then
-        Logger:Warn(("Player %s is already registered."):format(source))
         return self.Items[source]
     end
 
@@ -12,7 +11,7 @@ function Players:Register(source, citizenId)
 
     self.Items[source] = player
 
-    Logger:Debug(("Registered player [%s]"):format(source))
+    Logger:Debug(("Registered OB player [%s]"):format(source))
 
     return player
 end
@@ -32,7 +31,7 @@ function Players:Remove(source)
 
     self.Items[source] = nil
 
-    Logger:Debug(("Removed player [%s]"):format(source))
+    Logger:Debug(("Removed OB player [%s]"):format(source))
 
     return true
 end
