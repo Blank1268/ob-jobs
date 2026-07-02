@@ -18,7 +18,8 @@ shared_scripts {
     'shared/adapters/*.lua',
     'shared/classes/*.lua',
     'shared/managers/*.lua',
-    'shared/services/*.lua'
+    'shared/services/*.lua',
+    'shared/modules/*.lua'
 }
 
 

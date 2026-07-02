@@ -19,6 +19,10 @@ function OBJobs.Core:Initialize()
         OBJobs.Modules.Progression:Initialize()
     end
 
+    if OBJobs.Modules and OBJobs.Modules.Rewards then
+        OBJobs.Modules.Rewards:Initialize()
+    end
+
     self.Initialized = true
 
     Logger:Info("Framework Ready.")
