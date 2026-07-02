@@ -4,7 +4,6 @@ OBJobs.Core.Initialized = false
 
 ---Initializes the framework.
 function OBJobs.Core:Initialize()
-
     if self.Initialized then
         Logger:Warn("Framework already initialized.")
         return
@@ -12,8 +11,11 @@ function OBJobs.Core:Initialize()
 
     Logger:Info("Initializing OB Jobs Framework...")
 
+    if OBJobs.Core.Validator then
+        OBJobs.Core.Validator:Run()
+    end
+
     self.Initialized = true
 
     Logger:Info("Framework Ready.")
-
 end
