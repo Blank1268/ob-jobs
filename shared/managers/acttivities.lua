@@ -87,6 +87,12 @@ function Activities:Complete(playerSource, activity)
         activity:GetReward(),
         activity:GetXP()
     ))
+ OBJobs.Events:Emit("activity.completed", {
+    playerSource = playerSource,
+    player = OBJobs.Players:Get(playerSource),
+    activity = activity,
+    timestamp = os.time()
+ })    
 
    TriggerClientEvent("ob_jobs:client:notify", playerSource, ("Completed: %s | Earned $%s | %s XP"):format(
     activity:GetLabel(),
