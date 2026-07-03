@@ -22,6 +22,8 @@ function OBJobs.Core.Validator:Run()
     self:Check("XP Service", OBJobs.XP and OBJobs.XP.Add)
     self:Check("Tools Service", OBJobs.Tools and OBJobs.Tools.Has)
     self:Check("Contracts Manager", OBJobs.Contracts and OBJobs.Contracts.Register)
+    self:Check("Task Service", OBJobs.Tasks and OBJobs.Tasks.Start)
+    self:Check("Progress Provider", OBJobs.Progress and OBJobs.Progress.Start)
 
     Logger:Info("Startup validation complete.")
 end    

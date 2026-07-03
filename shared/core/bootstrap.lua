@@ -2,7 +2,6 @@ OBJobs.Core = {}
 
 OBJobs.Core.Initialized = false
 
----Initializes the framework.
 function OBJobs.Core:Initialize()
     if self.Initialized then
         Logger:Warn("Framework already initialized.")
@@ -14,7 +13,7 @@ function OBJobs.Core:Initialize()
     if OBJobs.Core.Validator then
         OBJobs.Core.Validator:Run()
     end
-    
+
     if OBJobs.Modules and OBJobs.Modules.Progression then
         OBJobs.Modules.Progression:Initialize()
     end
@@ -23,11 +22,15 @@ function OBJobs.Core:Initialize()
         OBJobs.Modules.Rewards:Initialize()
     end
 
+    if OBJobs.Modules and OBJobs.Modules.Contracts then
+        OBJobs.Modules.Contracts:Initialize()
+    end
+
+    if OBJobs.Modules and OBJobs.Modules.ContractRewards then
+        OBJobs.Modules.ContractRewards:Initialize()
+    end
+
     self.Initialized = true
 
     Logger:Info("Framework Ready.")
-end
-
-if OBJobs.Modules and OBJobs.Modules.Contracts then
-    OBJobs.Modules.Contracts:Initialize()
 end
