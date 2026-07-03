@@ -7,39 +7,25 @@ CreateThread(function()
     Wait(2000)
 
     OBJobs.Activities:Register({
-
         id = "dig_foundation",
-
         job = "construction",
-
         label = "Dig Foundation",
-
         duration = 10,
-
         reward = 250,
-
-        xp = 50
-
+        xp = 50,
+        requiredLevel = 1,
+        requiredTool = "hands"
     })
 
     OBJobs.Activities:Register({
-
-        id = "repair_pole",
-
-        job = "electrician",
-
-        label = "Repair Power Pole",
-
-        duration = 45,
-
-        reward = 550,
-
-        xp = 125
-
+        id = "dig_foundation_shovel",
+        job = "construction",
+        label = "Dig Foundation with Shovel",
+        duration = 10,
+        reward = 75,
+        xp = 35,
+        requiredLevel = 1,
+        requiredTool = "shovel"
     })
-
-    local activity = OBJobs.Activities:Get("repair_pole")
-
-    Logger:Debug(("Activity Loaded: %s"):format(activity:GetLabel()))
 
 end)

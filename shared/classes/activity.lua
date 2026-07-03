@@ -17,6 +17,9 @@ function OBJobs.Classes.Activity:new(data)
     self.cooldown = data.cooldown or 0
     self.enabled = data.enabled ~= false
 
+    assert(self.id, "Contract requires an id.")
+    assert(self.job, "Contract requires a job.")
+
     return self
 end
 

@@ -5,3 +5,10 @@ OBJobs.State = {
     IN_CONTRACT = "in_contract",
     RESPONDING_TO_EVENT = "responding_to_event"
 }
+
+OBJobs.ContractState = {
+    AVAILABLE = 1,
+    ACTIVE = 2,
+    COMPLETED = 3,
+    FAILED = 4
+}

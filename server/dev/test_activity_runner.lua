@@ -24,5 +24,5 @@ RegisterCommand("obtestactivity", function(source)
     player:SetCurrentJob("construction")
     player:SetDuty(true)
 
-    OBJobs.Activities:Start(player, "dig_foundation")
+    OBJobs.Activities:Start(player, "dig_foundation_shovel")
 end, false)
