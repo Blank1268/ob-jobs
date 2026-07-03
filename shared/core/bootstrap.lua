@@ -27,3 +27,7 @@ function OBJobs.Core:Initialize()
 
     Logger:Info("Framework Ready.")
 end
+
+if OBJobs.Modules and OBJobs.Modules.Contracts then
+    OBJobs.Modules.Contracts:Initialize()
+end

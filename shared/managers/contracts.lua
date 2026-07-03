@@ -66,6 +66,8 @@ function Contracts:Start(player, contractId)
         contract:GetLabel()
     ))
 
+    self:StartCurrentActivity(player)
+
     return true
 end
 
@@ -104,3 +106,56 @@ function Contracts:Complete(player)
 end
 
 OBJobs.Contracts = Contracts
+
+function Contracts:HandleActivityCompleted(data)
+    if not data then return false end
+    if not data.player then return false end
+    if not data.activity then return false end
+
+    local player = data.player
+    local active = self:GetActive(player)
+
+    if not active then
+        return false
+    end
+
+    local activities = active.contract:GetActivities()
+    local currentActivityId = activities[active.index]
+
+    if currentActivityId ~= data.activity:GetId() then
+        return false
+    end
+
+    active.index = active.index + 1
+
+    if active.index > #activities then
+        return self:Complete(player)
+    end
+
+    return self:StartCurrentActivity(player)
+end
+
+function Contracts:StartCurrentActivity(player)
+    local active = self:GetActive(player)
+
+    if not active then
+        Logger:Warn("No active contract found.")
+        return false
+    end
+
+    local activities = active.contract:GetActivities()
+    local activityId = activities[active.index]
+
+    if not activityId then
+        return self:Complete(player)
+    end
+
+    Logger:Info(("[%s] starting contract activity %s/%s: %s"):format(
+        player:GetSource(),
+        active.index,
+        #activities,
+        activityId
+    ))
+
+    return OBJobs.Activities:Start(player, activityId)
+end
