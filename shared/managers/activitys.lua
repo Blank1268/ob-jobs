@@ -67,6 +67,7 @@ function Activities:Start(player, activityId)
         player = player,
         label = activity:GetLabel(),
         duration = activity:GetDuration() * 1000,
+        animation = activity:GetAnimation(),
 
         onSuccess = function()
             self:Complete(playerSource, activity)

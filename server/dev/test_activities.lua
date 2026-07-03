@@ -14,7 +14,11 @@ CreateThread(function()
         reward = 250,
         xp = 50,
         requiredLevel = 1,
-        requiredTool = "hands"
+        requiredTool = "hands",
+
+        animation = {
+          scenario = "WORLD_HUMAN_GARDENER_PLANT"
+        }
     })
 
     OBJobs.Activities:Register({

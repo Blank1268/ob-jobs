@@ -17,9 +17,35 @@ function Tasks:Start(data)
         return false, "Missing task duration."
     end
 
-    Logger:Debug(("Starting task '%s'"):format(data.label))
+    local source = data.player:GetSource()
 
-    return OBJobs.Progress:Start(data)
+    Logger:Debug(("Starting task: %s"):format(data.label))
+
+    if data.animation then
+        Logger:Debug("Task received animation data.")
+    else
+        Logger:Debug("Task received NO animation data.")
+    end
+
+    if OBJobs.Animation then
+        OBJobs.Animation:Start(source, data.animation)
+    end
+
+    return OBJobs.Progress:Start({
+        player = data.player,
+        label = data.label,
+        duration = data.duration,
+
+        onSuccess = function()
+            if OBJobs.Animation then
+                OBJobs.Animation:Stop(source)
+            end
+
+            if data.onSuccess then
+                data.onSuccess()
+            end
+        end
+    })
 end
 
 OBJobs.Tasks = Tasks

@@ -16,9 +16,11 @@ function OBJobs.Classes.Activity:new(data)
     self.xp = data.xp or 0
     self.cooldown = data.cooldown or 0
     self.enabled = data.enabled ~= false
+    self.animation = data.animation
 
     assert(self.id, "Contract requires an id.")
     assert(self.job, "Contract requires a job.")
+    
 
     return self
 end
@@ -57,6 +59,10 @@ end
 
 function OBJobs.Classes.Activity:IsEnabled()
     return self.enabled
+end
+
+function OBJobs.Classes.Activity:GetAnimation()
+    return self.animation
 end
 
 function OBJobs.Classes.Activity:CanStart(player)
